@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,12 +19,49 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Firstname')
-            ->add('Lastname')
-            ->add('email')
-            ->add('Phone')
-            ->add('age')
-            ->add('Bloodgroup')
+            ->add('Firstname',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Firstname'
+                ],
+            ])
+            ->add('Lastname',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Lastname'
+                ],
+            ])
+            ->add('email',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'email',                     
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Email'
+                ],
+            ])
+            ->add('Phone',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Phone'
+                ],
+            ])
+            ->add('age',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Age'
+                ],
+            ])
+            ->add('Bloodgroup',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'BloodGroup'
+                ],
+            ])          
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -36,7 +74,11 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',                     
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'Password'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -49,7 +91,13 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('confirmPassword', PasswordType::class)
+            ->add('confirmPassword', PasswordType::class,[
+                'label' => false,
+                'attr' => [
+                    'class' => 'bg-transparent block mt-10 mx-auto border-b-2 w-1/5 h-20 text-2xl outline-none',
+                    'placeholder' => 'ConfirmPassword'
+                ],
+            ])
         ;
     }
 

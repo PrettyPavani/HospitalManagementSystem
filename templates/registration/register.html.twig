@@ -15,70 +15,63 @@
 {% endblock%}
 {% block body %}
 <div class="col-md-6 offset-md-6" style="margin-top: 10%;right: 17%">         
-  <div class="card">
-    <div class="card-body">    
-      <h3 style="text-align:center"> Register Here</h3>
+    <h3 style="text-align:center"> Register Here</h3>
     <div class="col-md-6-mt-4 offset-md-3-mt-4">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
     {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.Firstname)}}
-                        {{ form_widget(registrationForm.Firstname,{'attr':{'class':'form-control'}})}}
+                        {{ form_row(registrationForm.Firstname,{'attr':{'class':'form-control'}})}}
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.Lastname)}}
-                        {{ form_widget(registrationForm.Lastname,{'attr':{'class':'form-control'}})}}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        {{form_label(registrationForm.email)}}
-                        {{ form_widget(registrationForm.email,{'attr':{'class':'form-control'}})}}
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        {{form_label(registrationForm.Phone)}}
-                        {{ form_widget(registrationForm.Phone,{'attr':{'class':'form-control'}})}}                        
+                        {{ form_row(registrationForm.Lastname,{'attr':{'class':'form-control'}})}}
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.age)}}
-                        {{ form_widget(registrationForm.age,{'attr':{'class':'form-control'}})}}
+                        {{ form_row(registrationForm.email,{'attr':{'class':'form-control'}})}}
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.Bloodgroup)}}
-                        {{ form_widget(registrationForm.Bloodgroup,{'attr':{'class':'form-control'}})}}                         
+                        {{ form_row(registrationForm.Phone,{'attr':{'class':'form-control'}})}}                        
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.Password)}}
+                        {{ form_row(registrationForm.age,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{ form_row(registrationForm.Bloodgroup,{'attr':{'class':'form-control'}})}}                         
+                    </div>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
                         {{ form_widget(registrationForm.Password,{'attr':{'class':'form-control'}})}}
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        {{form_label(registrationForm.confirmPassword)}}
-                        {{ form_widget(registrationForm.confirmPassword,{'attr':{'class':'form-control'}})}}                      
+                        {{ form_row(registrationForm.confirmPassword,{'attr':{'class':'form-control'}})}}                      
                     </div>
                 </div>
-            </div>                              
+            </div>
+            {{ form_row(registrationForm.agreeTerms) }}   
+            <p>Already have Account ? <a href = "/login"> Login </a></p>
+         <button type="submit" class="btn btn-primary"> Register </button>                      
         {{ form_end(registrationForm) }}
-        <button type="submit" class="btn btn-primary"> Register </button> 
+        </div>
     </div>
 {% endblock %}

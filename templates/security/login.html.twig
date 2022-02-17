@@ -4,10 +4,9 @@
 
 {% block body %}
 <div class="col-md-4" style="margin-top: 10%;right: -8%">
-  <div class="card" style="font-family: 'IBM Plex Sans', sans-serif;">
-    <div class="card-body">
-      <center>
-      <div class="row" style="margin-top: 10%">
+  <center>
+    <div class="row" style="margin-top: 10%">
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
       <form method="post" class="form-group">
       {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -34,7 +33,7 @@
         </button>
       </div>
     <div>
-    <p class="mb-0">Don't have an account? <a href="/register">Register</a></p>
+    <p class="mb-0">Don't have an account? <a href="">Register</a></p>
   </div>
 </form>
 {% endblock %}
