@@ -15,7 +15,8 @@ class AddDoctorType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('specialization', ChoiceType::class, [
+            ->add('specialization', ChoiceType::class, 
+            [
                 'choices' => [
                     'Dentist' => 1,
                     'Genral' => 2,
@@ -27,7 +28,8 @@ class AddDoctorType extends AbstractType
                     'gynaecologist' => ['data' => 'gynaecologist'],
 
                 ],
-            ])
+            ]
+            )
 
             // ->add('specialization',ChoiceType::class, [
             //     'choice_attr' => ChoiceList::attr($this, function (?Doctor $doctor) {
@@ -42,7 +44,7 @@ class AddDoctorType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => NULL,
+            // 'data_class' => NULL,
             'data_class' => Doctor::class,
         ]);
     }

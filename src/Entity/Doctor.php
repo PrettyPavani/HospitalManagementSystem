@@ -6,10 +6,14 @@ use App\Repository\DoctorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DoctorRepository::class)]
 class Doctor
 {
+
+    const SPECIALIZATIONS = ["general","cardiologist","Dentist","Gynaecologist"];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -17,7 +21,7 @@ class Doctor
 
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
-
+    
     #[ORM\Column(type: 'string', length: 255)]
     private $specialization;
 
@@ -57,6 +61,7 @@ class Doctor
 
     public function getSpecialization(): ?string
     {
+        // return ["general","cardiologist","Dentist","Gynaecologist"];
         return $this->specialization;
     }
 
