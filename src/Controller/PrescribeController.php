@@ -18,17 +18,16 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class PrescribeController extends AbstractController
 {
     #[Route('/prescribe', name: 'prescribe')]
-    public function index(Request $request): Response
+    public function index(Request $request,EntityManagerInterface $entityManager): Response
     {
         $prescribe = new Prescribe();
         $appointment = new Appointment();
-        $prescribe ->getAppointment($appointment);        
+        $prescribe ->setPrescribe("Be Careful");        
         $form = $this->createForm(PrescriptionType::class, $prescribe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
             $entityManager->persist($prescribe);
-            // $entityManager->persist($doctor);
             $entityManager->flush();
             return $this->redirectToRoute('home');
         }   

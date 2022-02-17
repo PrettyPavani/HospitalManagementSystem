@@ -18,6 +18,9 @@ class Prescribe
     #[ORM\Column(type: 'string', length: 255)]
     private $Prescribe;
 
+    #[ORM\ManyToOne(targetEntity: Appointment::class, inversedBy: 'Presciption')]
+    private $appointment;
+
     public function __construct()
     {
         $this->Appointment = new ArrayCollection();
@@ -60,6 +63,13 @@ class Prescribe
     public function setPrescribe(string $Prescribe): self
     {
         $this->Prescribr = $Prescribe;
+
+        return $this;
+    }
+
+    public function setAppointment(?Appointment $appointment): self
+    {
+        $this->appointment = $appointment;
 
         return $this;
     }

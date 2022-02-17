@@ -24,6 +24,14 @@ class Appointment
     #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'appointments')]
     public $Doctor_name;
 
+    #[ORM\OneToMany(mappedBy: 'appointment', targetEntity: Prescribe::class)]
+    private $Presciption;
+
+    public function __construct()
+    {
+        $this->Presciption = new ArrayCollection();
+    }
+
     
     public function getId(): ?int
     {
@@ -70,6 +78,36 @@ class Appointment
     public function setDoctorName(?Doctor $Doctor_name): self
     {
         $this->Doctor_name = $Doctor_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Prescribe[]
+     */
+    public function getPresciption(): Collection
+    {
+        return $this->Presciption;
+    }
+
+    public function addPresciption(Prescribe $presciption): self
+    {
+        if (!$this->Presciption->contains($presciption)) {
+            $this->Presciption[] = $presciption;
+            $presciption->setAppointment($this);
+        }
+
+        return $this;
+    }
+
+    public function removePresciption(Prescribe $presciption): self
+    {
+        if ($this->Presciption->removeElement($presciption)) {
+            // set the owning side to null (unless already changed)
+            if ($presciption->getAppointment() === $this) {
+                $presciption->setAppointment(null);
+            }
+        }
 
         return $this;
     }
