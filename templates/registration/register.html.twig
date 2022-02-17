@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block stylesheet %}
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ asset('css/adminstyle.css') }}" rel="stylesheet"/>  
+  </head>
+{% endblock%}
+{% block body %}
+<div class="col-md-6 offset-md-6" style="margin-top: 5%;right: 8%">         
+  <div class="card">
+    <div class="card-body">    
+      <h1 style="text-align:center"> Register Here</h1>
+    <div class="col-md-6 offset-md-3">
+    {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.Firstname)}}
+                        {{ form_widget(registrationForm.Firstname,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.Lastname)}}
+                        {{ form_widget(registrationForm.Lastname,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.email)}}
+                        {{ form_widget(registrationForm.email,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.Phone)}}
+                        {{ form_widget(registrationForm.Phone,{'attr':{'class':'form-control'}})}}                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.age)}}
+                        {{ form_widget(registrationForm.age,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.Bloodgroup)}}
+                        {{ form_widget(registrationForm.Bloodgroup,{'attr':{'class':'form-control'}})}}                         
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.Password)}}
+                        {{ form_widget(registrationForm.Password,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        {{form_label(registrationForm.confirmPassword)}}
+                        {{ form_widget(registrationForm.confirmPassword,{'attr':{'class':'form-control'}})}}                      
+                    </div>
+                </div>
+            </div>                              
+        {{ form_end(registrationForm) }}
+        <button type="submit" class="btn btn-primary"> Register </button> 
+    </div>
+{% endblock %}

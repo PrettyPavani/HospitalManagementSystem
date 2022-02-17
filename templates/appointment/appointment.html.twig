@@ -1,0 +1,24 @@
+<div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Name</th> 
+      <th scope="col">Specialization</th>                  
+                 
+                  
+    </tr>
+  </thead>
+  <tbody>
+    {% for appointment in appointments %}
+    <tr>
+    <td>{{appointment.id}}</td>
+      <td >{{appointment.date|date('Y-m-d')}}</td>      
+        <td >{{appointment.time|date('H:i:s')}}</td> 
+        <td>{{appointment.Doctor_name}}</td>
+    {% endfor%}               
+  </tbody>
+</table><br>                  
+</div>

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>ADD Doctor</h1>
+
+    {{ form_start(form) }}
+            {{ form_row(form.Doctor_name) }}
+        
+    {{ form_end(form) }}
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>{% endblock %}
