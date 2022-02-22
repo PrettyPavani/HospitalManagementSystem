@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Appointment;
+use App\Entity\Prescribe;
 use App\Form\AppointmentType;
 use App\Security\AppCustomAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,6 +39,18 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
             'appointments' => $appointments,
         ]);
+    }
+
+    #[Route('/prescription', name: 'prescription_list')]
+
+    public function index(EntityManagerInterface $doctrine): Response{
+        $repository = $doctrine->getRepository(Prescribe::class);       
+        $users = $repository->findAll();
+        // dd($users);
+        return $this->render('Prescribe/prescribe.html.twig',[
+            'users'=> $users
+        ]);
+
     }
 
 }

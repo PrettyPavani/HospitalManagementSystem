@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
     <h1>ADD Doctor</h1>
-
-    {{ form_start(form) }}
-            {{ form_row(form.Doctor_name) }}
-        
+    {{ form_start(form) }}            
+        {{ form_row(form.Doctor_name) }}        
     {{ form_end(form) }}
 {% endblock %}
-
-
 {% block javascripts %}
 <script>
     $(document).ready(function() {

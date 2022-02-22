@@ -17,20 +17,8 @@
 <div class="col-md-4 offset-md-3 mt-4">      
             <div class="card">
               <div class="card-body">
-                <center><h4>ADD Doctor</h4></center><br>                 
+                <center><h4>Prescription Form </h4></center><br>                 
                   {{ form_start(form) }}
-                    <div class="form-group">
-                        <div class="form-outline">
-                            {{form_label(form.Prescribe)}}
-                            {{ form_widget(form.Prescribe,{'attr':{'class':'form-control'}})}}                        
-                        </div>
-                    </div>               
-                   
-                    <div class="form-group">
-                        <div class="form-outline">
-                            <button type="submit" class="btn btn-primary mt-2"> Register </button>
-                        </div>
-                    </div>                                           
                   {{ form_end(form) }}
                    
               </div>

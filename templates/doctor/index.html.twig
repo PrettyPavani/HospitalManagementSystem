@@ -43,7 +43,7 @@
                 <td >{{appointment.date|date('Y-m-d')}}</td>      
                 <td >{{appointment.time|date('H:i:s')}}</td> 
                 <td>{{appointment.Doctor_name}}</td>
-                <td><a href="/doctor/delete/{{appointment.id}}" class ="btn btn-danger">Delete </a>
+                <td><a href="/doctor/update/{{appointment.id}}" class ="btn btn-info">Update </a>
                 <a href="/doctor/prescribe/{{appointment.id}}" class ="btn btn-primary">Prescribe </a></td>
               {% endfor%}
             </tbody>               

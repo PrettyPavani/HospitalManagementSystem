@@ -89,7 +89,7 @@ class AdminController extends AbstractController
 
     public function delete(ManagerRegistry $doctrine,$id): Response
     {
-        $repository = $doctrine->getRepository(Doctor::class);       
+        $repository = $doctrine->getRepository(Doctor::class);        
         $doctor = $repository->find($id);
         $this->em->remove($doctor);
         $this->em->flush();

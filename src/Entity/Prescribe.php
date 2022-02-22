@@ -62,7 +62,7 @@ class Prescribe
 
     public function setPrescribe(string $Prescribe): self
     {
-        $this->Prescribr = $Prescribe;
+        $this->PrescribE = $Prescribe;
 
         return $this;
     }

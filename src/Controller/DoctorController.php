@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Doctor;
+use App\Entity\Prescribe;
 use App\Repository\DoctorRepository;
 use App\Entity\Appointment;
 use App\Form\AddDoctorType;
 use App\Form\AppointmentType;
+use App\Form\PrescriptionType;
 use App\Security\AppCustomAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,28 +43,39 @@ class DoctorController extends AbstractController
         ]); 
     }
 
-    #[Route('/doctor/delete/{id}',methods:['GET','DELETE'], name: 'appointment_delete')]
+    #[Route('/doctor/update/{id}', name: 'appointment_update')]
 
-    public function delete(ManagerRegistry $doctrine,$id): Response
+    public function update(Request $request,EntityManagerInterface $entityManager,ManagerRegistry $doctrine,$id): Response
     {
-        $repository = $doctrine->getRepository(Appointment::class);       
-        $appointments = $repository->find($id);
-        $this->em->remove($appointments);
-        $this->em->flush();
-        return $this->redirectToRoute('doctor');    
-    }
-
-    #[Route('/doctor/prescribe', name: 'doctor_prescribe')]
-    public function create(Request $request,EntityManagerInterface $entityManager): Response {
-        $appointment = new Appointment();
-        $precribe = new Prescribe();
-        $precribe ->getAppointment($appointment);
-        $form = $this->createForm(Appointment::class, $appointment);
+        $repository = $doctrine->getRepository(Prescribe::class);       
+        $prescribe = $repository->find($id);
+        $form = $this->createForm(PrescriptionType::class, $prescribe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $prescribe = $form->getData();
-            $entityManager->persist($appointment);
-            $entityManager->persist($precribe);
+            $entityManager->persist($prescribe);
+            $entityManager->flush();
+            return $this->redirectToRoute('doctor');
+        }
+        return $this->render('doctor/prescribe.html.twig', [
+            'form' => $form->createView()
+        ]);    
+    }
+
+    #[Route('/doctor/prescribe/{id}', name: 'doctor_prescribe')]
+    public function create(Request $request,EntityManagerInterface $entityManager): Response {
+        $appointment = new Appointment();
+        $appointment->setDate(new \DateTime('tomorrow'));
+        $appointment->setTime(new \DateTime('tomorrow'));
+        $prescribe = new Prescribe();
+        $prescribe ->getPrescribe($prescribe);        
+        $form = $this->createForm(PrescriptionType::class, $prescribe);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $prescribe = $form->getData();
+            $entityManager->persist($appointment); 
+            $entityManager->persist($prescribe);
             $entityManager->flush();
             return $this->redirectToRoute('doctor');
         }

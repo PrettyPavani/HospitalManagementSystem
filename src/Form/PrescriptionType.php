@@ -6,6 +6,7 @@ use App\Entity\Prescribe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PrescriptionType extends AbstractType
@@ -13,7 +14,7 @@ class PrescriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Appointment')
+            // ->add('Appointment')
             ->add('Prescribe')
             ->add('submit',SubmitType::class)
         ;
